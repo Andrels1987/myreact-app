@@ -4,7 +4,7 @@ import { slideInLeft } from 'react-animations'
 import Radium, { StyleRoot } from 'radium';
 import { useParams } from 'react-router-dom';
 import { Button, FormControl, FormControlLabel, FormGroup, FormHelperText, Input, InputLabel, Select, Switch } from '@material-ui/core'
-import {atualizarProduto, deletarProduto, getDoc} from './Services/produto.service'
+import { atualizarProduto, deletarProduto, getDoc } from './Services/produto.service'
 
 const styles = {
     bounce: {
@@ -26,14 +26,15 @@ const PerfilProduto = () => {
 
 
     useEffect(() => {        
-        return getDoc(params, setProduto, setChecked)
+        return getDoc(params, setProduto, setChecked)        
+        
     }, [params])
 
     const handleChange = (event) => {
         setChecked(event.target.checked)
-        setProduto({...produto, descontinuado: !checked})
+        setProduto({ ...produto, descontinuado: !checked })
     };
-    
+
     return (
         <StyleRoot>
             <div className="test" style={styles.bounce}>
@@ -62,7 +63,7 @@ const PerfilProduto = () => {
                     <Select
                         native
                         value={produto.tipo || "Loading"}
-                        onChange={(e) => setProduto({ ...produto, tipo: e.target.value })}                        
+                        onChange={(e) => setProduto({ ...produto, tipo: e.target.value })}
                     >
                         <option aria-label="None" value="" />
                         <option value={`Grama(s)`}>Gramas</option>
@@ -75,7 +76,7 @@ const PerfilProduto = () => {
                     <InputLabel htmlFor="quantidade" style={{ color: "#3686ee", marginTop: "1rem" }}>Descontinuado</InputLabel>
                     <FormControlLabel control={<Switch checked={checked} onChange={handleChange} name="checked" />} />
                 </FormGroup>
-                <div style={{ display: 'grid', justifyContent: "space-between",gridTemplateColumns: "1fr 1fr",  }}>
+                <div style={{ display: 'grid', justifyContent: "space-between", gridTemplateColumns: "1fr 1fr", }}>
                     <Button variant="contained" color="primary" onClick={() => atualizarProduto(produto, history)}>atualizar</Button>
                     <Button variant="contained" color="primary" onClick={() => deletarProduto(params.id, history)}>deletar</Button>
                 </div>

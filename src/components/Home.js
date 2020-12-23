@@ -47,7 +47,7 @@ const Home = ({ produto, setProduto }) => {
     let [loading, setLoading] = useState(true)
 
     useEffect(() => {        
-        getALLProdutos(setProdutos, setLoading) 
+        return getALLProdutos(setProdutos, setLoading) 
     }, [])
 
     

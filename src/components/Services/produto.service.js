@@ -38,7 +38,7 @@ const atualizarProduto = (produto, history) => {
 }
 
 const getDoc = (params, setProduto, setChecked) => {
-    let unsubscribe = db.collection(collection).doc(params.id)
+    return db.collection(collection).doc(params.id)
         .get()
         .then(
             res => {
@@ -50,7 +50,7 @@ const getDoc = (params, setProduto, setChecked) => {
                 }
             }
         )
-    return unsubscribe
+    
 }
 
 const getALLProdutos = (setProdutos, setLoading) =>{
