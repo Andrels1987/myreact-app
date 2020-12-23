@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import config from '../firebase.config'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
@@ -61,8 +61,6 @@ const Disponivel = () => {
     let date = new Date()
     let today = `${date.getDate()}/${date.getMonth() === 0 ? 1 : date.getMonth() + 1}/${date.getFullYear()}`;
     const classes = useStyles();
-    const refP = useRef(null)
-    const refS = useRef(null)
     const [disponivel, setDisponivel] = useState([])
     const [producao, setProducao] = useState([])
     const [usada, setUsado] = useState([])

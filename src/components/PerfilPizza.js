@@ -3,9 +3,7 @@ import { useHistory } from 'react-router-dom'
 import { slideInLeft } from 'react-animations'
 import Radium, { StyleRoot } from 'radium';
 import { useParams } from 'react-router-dom'
-import firebase from 'firebase/app'
-import 'firebase/firestore'
-import config from '../firebase.config'
+import {deletarPizza, atualizarPizza, getDoc} from './Services/pizza.service'
 import { Button, FormControl, FormHelperText, Input, InputLabel} from '@material-ui/core'
 const styles = {
     bounce: {
@@ -28,46 +26,23 @@ const styles = {
         marginTop: "1rem"
     }
 }
+
+
 const PerfilPizza = () => {
     const history = useHistory();
     const params = useParams()
-    let db = firebase.firestore(config);
     const [pizza, setPizza] = useState({})
-    let collection = 'pizza'
+    
 
     useEffect(() => {
+        
+        getDoc(params, setPizza)
 
-        const getDoc = async(params) => {
-            let unsubscribe = await db.collection(collection).doc(params.id)
-                .get()
-                .then(
-                    res => {
-                        if (res.exists) {
-                            let data = res.data()
-                            let id = res.id
-                            setPizza({id,...data})
-                        }
-                    }
-                )
-            return unsubscribe
-        }
-        getDoc(params)
+    }, [params])
 
-    }, [collection, db, params])
+    
 
-    const atualizarPizza = () => {
-        let data = pizza;
-        let db = firebase.firestore(config)
-        db.collection(collection).doc(pizza.id).update(data)
-        history.push('/pizzas')
-    }
-
-    const deletarPizza = () => {
-        //let data = product;
-        let db = firebase.firestore(config)
-        db.collection(collection).doc(params.id).delete().then(res => console.log("DELETED"))
-        history.push('/pizzas')
-    }
+   
     return (
         <StyleRoot>
             <div className="test" style={styles.bounce}>
@@ -87,8 +62,8 @@ const PerfilPizza = () => {
                     <FormHelperText style={{ color: "#e49144" }} id="my-helper-text">Quantidade</FormHelperText>
                 </FormControl>
                 <div style={styles.btn}>
-                    <Button variant="contained" color="primary" onClick={() => atualizarPizza()}>atualizar</Button>
-                    <Button variant="contained" color="primary" onClick={() => deletarPizza()}>deletar</Button>
+                    <Button variant="contained" color="primary" onClick={() => atualizarPizza(pizza,history)}>atualizar</Button>
+                    <Button variant="contained" color="primary" onClick={() => deletarPizza(params.id, history)}>deletar</Button>
                 </div>
             </div> 
         </StyleRoot>

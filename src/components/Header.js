@@ -8,7 +8,6 @@ import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { Link } from 'react-router-dom';
-import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -149,7 +148,7 @@ const Header = ({ handleChange, displayName, signout }) => {
                     
                         <ul ref={ulref} onClick={closeMenuAfterChoose}>
                             <li>
-                                <Link to="/add-produto">Adicionar Produto</Link>
+                                <Link to="/lista-de-compras">Lista de compras</Link>
                             </li>
                             <li>
                                 <Link to="/disponivel">Controle de massa</Link>

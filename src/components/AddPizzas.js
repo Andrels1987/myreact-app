@@ -1,21 +1,12 @@
 import { Button, FormControl, FormHelperText, Input, InputLabel } from '@material-ui/core'
 import React, { useState } from 'react'
-import 'firebase/firestore'
-import firebase from 'firebase/app'
-import fb from '../firebase.config'
+import {salvarPizzas} from '../components/Services/pizza.service'
 
 export const AddPizzas = ({ reference }) => {
     const [nome, setNome] = useState("");
     const [ingredientes, setIngredientes] = useState("");
     const [quantidade, setQuantidade] = useState("");
 
-
-
-    const salvarPizzas = async () => {
-        let db = firebase.firestore(fb);
-        await db.collection('pizza').add({ nome: nome, ingredientes: ingredientes, quantidade: quantidade })
-        reference.style.top = "-400px"
-    }
 
     return (
         
@@ -38,7 +29,7 @@ export const AddPizzas = ({ reference }) => {
                     <Input id="quantidade" aria-describedby="my-helper-text" onChange={(e) => setQuantidade(e.target.value)} />
                     <FormHelperText style={{ color: "#e49144" }} id="my-helper-text">quantidade de cada ingrediente de acordo com a lista de ingredientes</FormHelperText>
                 </FormControl>
-                <Button variant="contained" color="primary" onClick={() => salvarPizzas()}>Enviar</Button>
+                <Button variant="contained" color="primary" onClick={() => salvarPizzas(nome, ingredientes, quantidade, reference)}>Enviar</Button>
             </div>
         
     )

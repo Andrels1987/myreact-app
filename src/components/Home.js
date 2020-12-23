@@ -1,8 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-//import config from '../firebase.config'
-import 'firebase/firestore'
-import firebase from 'firebase/app'
-import config from '../firebase.config';
+
 import AddCircleOutlinedIcon from '@material-ui/icons/AddCircleOutlined';
 import AddProdutos from './AddProdutos';
 import { Link } from 'react-router-dom';
@@ -10,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-
+import { getALLProdutos, showAddProduto } from '../components/Services/produto.service' 
 import { slideInRight } from 'react-animations'
 import Radium, { StyleRoot } from 'radium';
 import Loading from '../Loading';
@@ -44,54 +41,16 @@ const useStyles = makeStyles({
 
 const Home = ({ produto, setProduto }) => {
     const classes = useStyles();
-    let collection = 'products'
-    let [products, setProducts] = useState([])
-    let db = firebase.firestore(config)
+    let [produtos, setProdutos] = useState([])
     let refProdutoBox = useRef(null);
     let boxRef = refProdutoBox.current;
     let [loading, setLoading] = useState(true)
 
-    useEffect(() => {
+    useEffect(() => {        
+        getALLProdutos(setProdutos, setLoading) 
+    }, [])
 
-        // const FetchData = async (collection) => {
-        //     const response = await db.collection(collection).get();
-        //     const prodData = await response.docs.map(prod => {
-        //         let id = prod.id
-        //         let data = prod.data()
-        //         return { id, ...data }
-        //     })
-        //     setProducts(prodData)
-        //     return prodData
-        // }
-        // FetchData(collection);
-        return db.collection(collection).onSnapshot(
-            snapshot => {
-                const intermediateData = []
-                snapshot.docs.map((doc) => {
-                    let id = doc.id
-                    let data = doc.data()
-                    intermediateData.push({ id, ...data })
-                    return { id, ...data }
-                });
-                if(intermediateData){
-                    setProducts(intermediateData)
-                    setLoading(false)
-                }
-                
-            }
-        )
-    }, [db, collection])
-
-    const showAddProduto = () => {
-        let top = refProdutoBox.current.style.top
-        if (top === "68px") {
-            boxRef.style.transition = "1s"
-            boxRef.style.top = "-600px"            
-        } else {
-            boxRef.style.top = "68px"
-            boxRef.style.transition = "1s"
-        }
-    }
+    
 
     return (
         <div>
@@ -125,7 +84,7 @@ const Home = ({ produto, setProduto }) => {
             <StyleRoot>
             {loading  ? <Loading /> : ( <div className="test" style={styles.bounce}>
                     <div className="container-list">
-                        {products.map(prod => (
+                        {produtos.map(prod => (
                             <Link to={`/produto/${prod.id}`} key={prod.id} style={{ color: "black", textAlign: "center" }} onClick={() => setProduto(null)}>
                                 <Card className={classes.root}>
                                     <CardContent>
@@ -152,7 +111,7 @@ const Home = ({ produto, setProduto }) => {
                     </div>
                 </div>)}
                
-                <AddCircleOutlinedIcon onClick={() => showAddProduto()} className="add-icon" color="primary" style={{ fontSize:45 }} />
+                <AddCircleOutlinedIcon onClick={() => showAddProduto(boxRef)} className="add-icon" color="primary" style={{ fontSize:45 }} />
 
             </StyleRoot>
         </div>

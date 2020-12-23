@@ -1,32 +1,5 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles';
-import { Button } from '@material-ui/core'
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        '& > *': {
-            margin: theme.spacing(1),
-            width: '30ch',
-        },
-    },
-    div: {
-        "marginTop": 150
-    },
-    fields: {
-        "marginBottom": 10,
-        "width": '30ch',
-    },
-    containerLogin: {
-        "margin": "auto",
-    },
-    permission: {
-        'color': "blue",
-        'float': 'right',
-        'marginTop': '8rem',
-        'marginRight': '1rem'
-    }
-
-}));
 
 
 const Login = ({
@@ -39,7 +12,6 @@ const Login = ({
     hasAccount,
     setHasAccount }) => {
 
-    const classes = useStyles();
     return (
         <div className="containerLogin">
             <form>
@@ -57,7 +29,7 @@ const Login = ({
                     (
                         <section className="help-text">
                             <button className="btn-form" onClick={createusers}>Criar conta</button>
-                            <p>Tem conta, <span onClick={() => setHasAccount(!hasAccount)}>Acessar</span></p>
+                            <p>Tem conta, <span onClick={() => setHasAccount(!hasAccount)}>Acesse</span></p>
                         </section>
 
                     ) :
