@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,8 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f7f7f7;
-}
+ }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -49,40 +49,98 @@ ul li:hover{
 
 /* LOGIN */
 .containerLogin{
-  margin-top: 10rem;
-  display: grid;
-  justify-content: center;
+  margin-top: 8rem;
+  display: flex;
+  justify-content: space-around;
   height: 20rem;
-  color: #08325F;
+  padding: 1rem;
+}
+.lateral{  
+  position: relative;
+  color: #020211; 
+  width: 70%;
+  box-sizing: border-box;
+  height: 25.4rem;
+  border-right: solid .1rem rgb(231, 163, 60) ;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 2px;
+  padding: 1rem 1rem;
+}
+.lateral h1{
+  position: absolute;
+  font-size: 4rem;
+  color: #e79c2a;
+  z-index: 1;
+  top: 40%;
+  border: solid;
+  margin: 0;
+  left: 20%;
+}
+.img1{
+  grid-row: 1 / span 5;
+  grid-column: 1 /span 2;
+  background-image: url("./components/assets/img1.jpg");
+  background-size: cover;
+  opacity: .3;
+}
+.img2{
+  grid-row: 2 / span 5;
+  grid-column: 3 / span 2;
+  background-image: url("./components/assets/img2.jpg");
+  background-size: cover;
+  opacity: .2;
+}
+.img3{
+  grid-row: 3/ span 5;
+  grid-column: span 2;
+  background-image: url("./components/assets/img3.jpg");
+  background-size: cover;
+  opacity: .1;
 }
 .containerLogin form{  
-  padding: 2rem;
   box-shadow: 5px 5px 10px rgba(101, 134, 210, 0.91);
-  background-color: #619BBA;
-  height: 14rem;
-  margin: 0 auto;
+  background-color: #082a41;
   border-radius: 8px;
+  box-sizing: border-box;
+  height: 25rem;
+  width: 300px;
+  margin: 0 .5rem;
+  padding: 3em 1rem;
 }
 .input-label{  
-  margin-bottom: 1.8rem;
+  width: 100%;
+  margin-bottom: 3.3rem;
+  text-align: center;
 }
 .input-label label{  
-  font-weight: bolder;  
+  font-weight: bolder; 
+  font-size: 20px;   
+  font-family: 'Lobster', cursive; 
+  letter-spacing: 3px;
+  color: rgb(236, 229, 229);
 }
 .input-label p{  
   font-weight: bolder;  
   font-size: 9px;
   color: #945206;
-  margin: 0;
+  margin: 4px;
 }
 .input-label input{  
-  padding: .3rem;
-  background: #576E77 ;
-  color: white ;
+  padding: .6rem;
+  color: rgb(3, 13, 34) ;
+  border-radius: 20px ;
+  margin-top: .5rem;
+  font-size: 20px;
+  font-family: 'Lobster', cursive;
+}
+button:focus,
+.input-label input:focus{  
+  outline-width: 0;
 }
 .containerLogin form div {
   margin-top: 1rem;
-  width: 12rem;
   height: 3rem;
   display: grid;
   grid-template-rows: 1fr 1fr ;
@@ -98,16 +156,23 @@ ul li:hover{
   font-weight: bolder;
   background-color: #2F854E;
   width: 100%;
-  padding: 7px;
+  padding: 10px;
+  font-size: 20px;
+  font-family: 'Lobster', cursive;
+  letter-spacing: 3px;
+  margin-top: .6rem;
+  border-radius: 10px;
 }
 .btn-form:hover{
   background-color:#e5eaee ;
   color: #2F854E;  
 }
 .help-text p{
-  font-size: 10px;
+  font-size: 13px;
+  font-weight: bolder;
   float: right;
   margin-top: 1.5rem;
+  color: #9c9ce0;
 }
 
 
@@ -313,7 +378,23 @@ footer{
     height: 250px;
   }
 }
-@media screen and (max-height: 568px){
+/* @media screen and (max-height: 568px){
+  
+  /* DISPONIVEL */
+  /* .wrap-saida
+    left: 6%;
+    top: 46%;
+    height: 240px;
+  
+  .wrap-producao
+    z-index: 1;
+    top: 46%;
+    height: 240px;
+    left: 6%; */
+  
+
+ 
+@media screen and (max-width: 568px){
   
   /* DISPONIVEL */
   .wrap-saida{
@@ -326,5 +407,39 @@ footer{
     top: 46%;
     height: 240px;
     left: 6%;
+  }
+
+  /* LOGIN */
+
+  .lateral{
+    display: none;
+  }
+  .containerLogin{
+    justify-content: center;
+    padding: 0;
+    transition: .8s;
+  }
+ 
+}
+@media screen and (max-width: 837px){
+  
+  /* LOGIN */
+  .lateral{
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .lateral h1{
+    font-size: 2rem;
+  }
+  .img1{
+    display: none;
+  }
+  .img2{
+    grid-row: 1 / span 5 ;
+    grid-column: span 2 ;
+  }
+  .img3{
+    grid-row: 2 /span 5 ;
+    grid-column: 3 span 2 ;
   }
 }

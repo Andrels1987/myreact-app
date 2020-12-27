@@ -1,6 +1,7 @@
-import React from 'react'
-
-
+import React, { useEffect, useState } from 'react'
+import img1 from "./assets/img1.jpg"
+import img2 from "./assets/img2.jpg"
+import img3 from "./assets/img3.jpg"
 
 const Login = ({
     login,
@@ -12,16 +13,23 @@ const Login = ({
     hasAccount,
     setHasAccount }) => {
 
+
     return (
-        <div className="containerLogin">
-            <form>
+        <div className="containerLogin" >
+            <section className="lateral" >
+                <h1>E-STOCK</h1>
+                <div className="images img1"></div>
+                <div  className="images img2"></div>
+                <div  className="images img3"></div>
+            </section>
+            <form >
                 <div className="input-label">
-                    <label  htmlFor="email">Email:</label>
-                    <input type="text" name="email" inputMode="email" onChange={getEmail} />
+                    <label htmlFor="email">Email</label>
+                    <input type="text" name="email" inputMode="email" onChange={getEmail} autoFocus={true} />
                     <p>{emailError}</p>
                 </div>
                 <div className="input-label">
-                    <label  htmlFor="senha">Senha:</label>
+                    <label htmlFor="senha">Senha</label>
                     <input type="password" name="senha" onChange={getSenha} />
                     <p>{passwordError}</p>
                 </div>

@@ -36,7 +36,7 @@ function App() {
         setUser(null)
         setEmailError("")
         setPasswordError("")
-        body.style.background = "#A7D8EB"
+        body.style.background = "linear-gradient(90deg, rgba(56,177,215,1) 0%, rgba(2,23,41,1) 0%, rgba(6,82,147,1) 100%)"
       }
     })
   }
