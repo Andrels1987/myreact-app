@@ -26,7 +26,7 @@ export const AddPizzas = ({ reference }) => {
                 </FormControl>
                 <FormControl className="form-control">
                     <InputLabel htmlFor="quantidade" >Quantidade</InputLabel>
-                    <Input id="quantidade" aria-describedby="my-helper-text" onChange={(e) => setQuantidade(e.target.value)} />
+                    <Input inputMode="numeric" id="quantidade" aria-describedby="my-helper-text" onChange={(e) => setQuantidade(e.target.value)} />
                     <FormHelperText style={{ color: "#e49144" }} id="my-helper-text">quantidade de cada ingrediente de acordo com a lista de ingredientes</FormHelperText>
                 </FormControl>
                 <Button variant="contained" color="primary" onClick={() => salvarPizzas(nome, ingredientes, quantidade, reference)}>Enviar</Button>

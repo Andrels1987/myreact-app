@@ -41,12 +41,12 @@ const AddProdutos = ({ reference, product }) => {
                 </FormControl>
                 <FormControl className="form-control">
                     <InputLabel htmlFor="ingredientes" >Quantidade em estoque</InputLabel>
-                    <Input id="ingredientes" aria-describedby="my-helper-text" onChange={(e) => setProduto({...produto, quantidadeEstoque: e.target.value})} />
+                    <Input inputMode="numeric" id="ingredientes" aria-describedby="my-helper-text" onChange={(e) => setProduto({...produto, quantidadeEstoque: e.target.value})} />
                     <FormHelperText style={{ color: "#e49144" }} id="my-helper-text">Quantidade em estoque</FormHelperText>
                 </FormControl>
                 <FormControl className="form-control">
                     <InputLabel htmlFor="quantidade" >Minimo em estoque</InputLabel>
-                    <Input id="minimo-estoque" aria-describedby="my-helper-text" onChange={(e) =>  setProduto({...produto, minimoEstoque: e.target.value})} />
+                    <Input inputMode="numeric" id="minimo-estoque" aria-describedby="my-helper-text" onChange={(e) =>  setProduto({...produto, minimoEstoque: e.target.value})} />
                     <FormHelperText style={{ color: "#e49144" }} id="my-helper-text">Estoque minimo</FormHelperText>
                 </FormControl>
                 <FormControl className="form-control">

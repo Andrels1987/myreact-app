@@ -241,7 +241,12 @@ footer{
 
 
 /*DISPONIVEL*/
-
+.btnsDisponivel{
+  margin-top: .6rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: space-around; 
+}
 .wrap-producao, .wrap-saida{
   text-align: center;
   background: #CFD6EB;
@@ -340,6 +345,7 @@ footer{
     width: 350px;
   }
   /* DISPONIVEL */
+
  
 }
 @media screen and (min-width: 629px){
@@ -359,13 +365,13 @@ footer{
   /* DISPONIVEL */
   .wrap-saida{
     left: 51%;
-    top: 45%;
+    top: 43%;
     width: 48%;
     padding-top: 2rem;
   }
   .wrap-producao{
     z-index: 1;
-    top: 45%;
+    top: 43%;
     width: 48%;
     padding-top: 2rem;
   }
@@ -377,37 +383,19 @@ footer{
     top: 45%;
     height: 250px;
   }
+  .btnsDisponivel .btn-prod,
+  .btnsDisponivel .btn-saida{
+    display: none;
+  }
+  .btnsDisponivel .btn-fechar{
+    grid-column: 3 / span 1;    
+  }
 }
-/* @media screen and (max-height: 568px){
-  
-  /* DISPONIVEL */
-  /* .wrap-saida
-    left: 6%;
-    top: 46%;
-    height: 240px;
-  
-  .wrap-producao
-    z-index: 1;
-    top: 46%;
-    height: 240px;
-    left: 6%; */
+
   
 
  
 @media screen and (max-width: 568px){
-  
-  /* DISPONIVEL */
-  .wrap-saida{
-    left: 6%;
-    top: 46%;
-    height: 240px;
-  }
-  .wrap-producao{
-    z-index: 1;
-    top: 46%;
-    height: 240px;
-    left: 6%;
-  }
 
   /* LOGIN */
 
