@@ -40,41 +40,42 @@ const PerfilProduto = () => {
             <div className="test" style={styles.bounce}>
                 <FormControl className="form-control">
                     <InputLabel style={{ color: "#3686ee" }} htmlFor="pizza-nome">Nome do produto</InputLabel>
-                    <Input id="pizza-nome" aria-describedby="my-helper-text" onChange={(e) => setProduto({ ...produto, nomeProduto: e.target.value })} value={produto.nomeProduto || "Loading..."} />
+                    <Input id="pizza-nome" aria-describedby="my-helper-text" onChange={(e) => setProduto({ ...produto, nomeProduto: e.target.value })} value={produto.nomeProduto || ""} />
                     <FormHelperText style={{ color: "#e49144" }} id="my-helper-text">Insira o nome do produto</FormHelperText>
                 </FormControl>
                 <FormControl className="form-control">
                     <InputLabel htmlFor="ingredientes" style={{ color: "#3686ee" }}>Quantidade em estoque</InputLabel>
-                    <Input id="ingredientes" aria-describedby="my-helper-text" onChange={(e) => setProduto({ ...produto, quantidadeEstoque: e.target.value })} value={produto.quantidadeEstoque || "Loading..."} />
+                    <Input id="ingredientes" aria-describedby="my-helper-text" onChange={(e) => setProduto({ ...produto, quantidadeEstoque: e.target.value })} value={produto.quantidadeEstoque || ""} />
                     <FormHelperText style={{ color: "#e49144" }} id="my-helper-text">Quantidade em estoque</FormHelperText>
                 </FormControl>
                 <FormControl className="form-control">
                     <InputLabel htmlFor="quantidade" style={{ color: "#3686ee" }}>Minimo em estoque</InputLabel>
-                    <Input id="minimo-estoque" aria-describedby="my-helper-text" onChange={(e) => setProduto({ ...produto, minimoEstoque: e.target.value })} value={produto.minimoEstoque || "Loading..."} />
+                    <Input id="minimo-estoque" aria-describedby="my-helper-text" onChange={(e) => setProduto({ ...produto, minimoEstoque: e.target.value })} value={produto.minimoEstoque || ""} />
                     <FormHelperText style={{ color: "#e49144" }} id="my-helper-text">Estoque minimo</FormHelperText>
                 </FormControl>
                 <FormControl className="form-control">
                     <InputLabel htmlFor="quantidade" style={{ color: "#3686ee" }}>Categoria</InputLabel>
-                    <Input id="categoria" aria-describedby="my-helper-text" onChange={(e) => setProduto({ ...produto, categoria: e.target.value })} value={produto.categoria || "Loading..."} />
+                    <Input id="categoria" aria-describedby="my-helper-text" onChange={(e) => setProduto({ ...produto, categoria: e.target.value })} value={produto.categoria || ""} />
                     <FormHelperText style={{ color: "#e49144" }} id="my-helper-text">Ex.: Bebida, frio, legumes etc.</FormHelperText>
                 </FormControl>
                 <FormControl className="form-control">
                     <InputLabel htmlFor="quantidade" style={{ color: "#3686ee" }}>Tipo</InputLabel>
                     <Select
                         native
-                        value={produto.tipo || "Loading"}
+                        value={produto.tipo || ""}
                         onChange={(e) => setProduto({ ...produto, tipo: e.target.value })}
                     >
                         <option aria-label="None" value="" />
                         <option value={`Grama(s)`}>Gramas</option>
                         <option value={`Maço(s)`}>Maço</option>
                         <option value={`Unidade(s)`}>Unidade</option>
+                        <option value={`ml(s)`}>ml(s)</option>
                     </Select>
                     <FormHelperText style={{ color: "#e49144" }} id="my-helper-text">Ex.: Gramas, pacotes, unidades etc.</FormHelperText>
                 </FormControl>
                 <FormGroup>
                     <InputLabel htmlFor="quantidade" style={{ color: "#3686ee", marginTop: "1rem" }}>Descontinuado</InputLabel>
-                    <FormControlLabel control={<Switch checked={checked} onChange={handleChange} name="checked" />} />
+                    <FormControlLabel control={<Switch checked={checked || false} onChange={handleChange} name="checked" />} />
                 </FormGroup>
                 <div style={{ display: 'grid', justifyContent: "space-between", gridTemplateColumns: "1fr 1fr", }}>
                     <Button variant="contained" color="primary" onClick={() => atualizarProduto(produto, history)}>atualizar</Button>

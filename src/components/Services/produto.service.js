@@ -10,7 +10,7 @@ const showAddProduto = (ref) => {
     let top = ref.style.top
     if (top === "68px") {
         ref.style.transition = "1s"
-        ref.style.top = "-600px"            
+        ref.style.top = "-600px"
     } else {
         ref.style.top = "68px"
         ref.style.transition = "1s"
@@ -18,22 +18,39 @@ const showAddProduto = (ref) => {
 }
 //ADICIONAR PRODUTOS
 const salvarProduto = (produto, reference) => {
-    //let data = { categoria, nomeProduto, descontinuado, minimoEstoque, quantidadeEstoque, tipo }
-    db.collection(collection).add(produto)
+    let prodToSave = {
+        categoria: Number(produto.categoria),
+        id: parseInt(produto.id),
+        minimoEstoque: Number(produto.minimoEstoque),
+        quantidadeEstoque: parseInt(produto.quantidadeEstoque),
+        tipo: Number(produto.tipo),
+        nomeProduto: parseInt(produto.nomeProduto),
+        descontinuado: produto.descontinuado
+    }
+    db.collection(collection).add(prodToSave)
     reference.style.top = "-565px"
 }
 
 //DELETAR PRODUTOS
 const deletarProduto = (id, history) => {
     db.collection(collection).doc(id).delete()
-    .then(res => {
-        console.log("DELETED")
-    })
+        .then(res => {
+            console.log("DELETED")
+        })
     history.push('/')
 }
 //ATUALIZAR PRODUTOS
 const atualizarProduto = (produto, history) => {
-    db.collection(collection).doc(produto.id).update(produto)
+    let prodToUpdate = {
+        categoria: produto.categoria,
+        id: produto.id,
+        minimoEstoque: Number(produto.minimoEstoque),
+        quantidadeEstoque: parseInt(produto.quantidadeEstoque),
+        tipo: produto.tipo,
+        nomeProduto: produto.nomeProduto,
+        descontinuado: produto.descontinuado
+    }
+    db.collection(collection).doc(produto.id).update(prodToUpdate)
     history.push('/')
 }
 
@@ -45,15 +62,15 @@ const getDoc = (params, setProduto, setChecked) => {
                 if (res.exists) {
                     let data = res.data()
                     let id = res.id
-                    setProduto({id,...data})
+                    setProduto({ id, ...data })
                     setChecked(data.descontinuado)
                 }
             }
         )
-    
+
 }
 
-const getALLProdutos = (setProdutos, setLoading) =>{
+const getALLProdutos = (setProdutos, setLoading) => {
     return db.collection(collection).onSnapshot(
         snapshot => {
             const intermediateData = []
@@ -63,12 +80,12 @@ const getALLProdutos = (setProdutos, setLoading) =>{
                 intermediateData.push({ id, ...data })
                 return { id, ...data }
             });
-            if(intermediateData){
+            if (intermediateData) {
                 setProdutos(intermediateData)
                 setLoading(false)
             }
-            
+
         }
     )
 }
-export {showAddProduto,getALLProdutos, salvarProduto, atualizarProduto, deletarProduto, getDoc}
+export { showAddProduto, getALLProdutos, salvarProduto, atualizarProduto, deletarProduto, getDoc }

@@ -11,7 +11,6 @@ const Producao = () => {
     let ano = new Date().getFullYear()
     let mesFormatado = mes === 12 ? 1 : mes + 1
     let hoje = dia + "/" + mesFormatado + "/" + ano
-    const [date, setDate] = useState(hoje)
     const [ms35, setMs35] = useState(null)
     const [ms45, setMs45] = useState(null)
     const [md25, setMd25] = useState(null)
@@ -21,8 +20,8 @@ const Producao = () => {
 
 
     const bolasProduzidasNoDia = () => {
-        let producao = { dataProducao: date.toString(), md25, md35, md45, ms35, ms45 }
-        db.collection('producao').where('dataProducao', '==', date).get()
+        let producao = { dataProducao: hoje.toString(), md25, md35, md45, ms35, ms45 }
+        db.collection('producao').where('dataProducao', '==', hoje).get()
             .then(
                 res => {
                     if (res.docs.length !== 0) {
@@ -33,7 +32,7 @@ const Producao = () => {
                         });
 
                         producao = {
-                            dataProducao: date.toString(),
+                            dataProducao: hoje.toString(),
                             id: prods[0].id,
                             md25: md25 + prods[0].md25,
                             md35: md35 + prods[0].md35,

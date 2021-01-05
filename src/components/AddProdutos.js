@@ -36,7 +36,7 @@ const AddProdutos = ({ reference, product }) => {
                 </div>
                 <FormControl className="form-control">
                     <InputLabel htmlFor="pizza-nome">Nome do produto</InputLabel>
-                    <Input id="pizza-nome" aria-describedby="my-helper-text" onChange={(e) => setProduto({...produto, nomeProduto: e.target.value})} />
+                    <Input inputMode="numeric" id="pizza-nome" aria-describedby="my-helper-text" onChange={(e) => setProduto({...produto, nomeProduto: e.target.value})} />
                     <FormHelperText style={{ color: "#e49144" }} id="my-helper-text">Insira o nome do produto</FormHelperText>
                 </FormControl>
                 <FormControl className="form-control">

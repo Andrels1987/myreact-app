@@ -10,7 +10,7 @@ const Saida = () => {
     let ano = new Date().getFullYear()
     let mesFormatado = mes === 12 ? 1 : mes + 1
     let hoje = dia + "/" + mesFormatado + "/" + ano
-    const [date, setDate] = useState(hoje)
+    
     const [ms35, setMs35] = useState(null)
     const [ms45, setMs45] = useState(null)
     const [md25, setMd25] = useState(null)
@@ -20,9 +20,9 @@ const Saida = () => {
 
 
     const bolasUsadaNoDia = () => {
-        let saida = { dataProducao: date.toString(), md25, md35, md45, ms35, ms45 }
+        let saida = { dataProducao: hoje.toString(), md25, md35, md45, ms35, ms45 }
         let db = firebase.firestore(config)
-        db.collection('saida').where('dataProducao', '==', date).get()
+        db.collection('saida').where('dataProducao', '==', hoje).get()
             .then(
                 res => {
                     if (res.docs.length !== 0) {
@@ -33,7 +33,7 @@ const Saida = () => {
                         });
 
                         saida = {
-                            dataProducao: date.toString(),
+                            dataProducao: hoje.toString(),
                             id: usadas[0].id,
                             md25: md25 + usadas[0].md25,
                             md35: md35 + usadas[0].md35,
