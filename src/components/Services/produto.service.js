@@ -19,12 +19,12 @@ const showAddProduto = (ref) => {
 //ADICIONAR PRODUTOS
 const salvarProduto = (produto, reference) => {
     let prodToSave = {
-        categoria: Number(produto.categoria),
-        id: parseInt(produto.id),
+        categoria: produto.categoria,
+        id: produto.id,
         minimoEstoque: Number(produto.minimoEstoque),
         quantidadeEstoque: parseInt(produto.quantidadeEstoque),
-        tipo: Number(produto.tipo),
-        nomeProduto: parseInt(produto.nomeProduto),
+        tipo: produto.tipo,
+        nomeProduto: produto.nomeProduto,
         descontinuado: produto.descontinuado
     }
     db.collection(collection).add(prodToSave)
