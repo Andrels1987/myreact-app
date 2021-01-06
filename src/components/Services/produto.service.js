@@ -18,15 +18,16 @@ const showAddProduto = (ref) => {
 }
 //ADICIONAR PRODUTOS
 const salvarProduto = (produto, reference) => {
+
     let prodToSave = {
         categoria: produto.categoria,
-        id: produto.id,
         minimoEstoque: Number(produto.minimoEstoque),
         quantidadeEstoque: parseInt(produto.quantidadeEstoque),
         tipo: produto.tipo,
         nomeProduto: produto.nomeProduto,
         descontinuado: produto.descontinuado
     }
+
     db.collection(collection).add(prodToSave)
     reference.style.top = "-565px"
 }

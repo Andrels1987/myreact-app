@@ -65,6 +65,7 @@ const AddProdutos = ({ reference, product }) => {
                         <option value={`Grama(s)`}>Gramas</option>
                         <option value={`Maço(s)`}>Maço</option>
                         <option value={`Unidade(s)`}>Unidade</option>
+                        <option value={`ml(s)`}>ml(s)</option>
                     </Select>
                     <FormHelperText>Ex.: Gramas, pacotes, unidades etc.</FormHelperText>
                 </FormControl>
