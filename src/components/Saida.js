@@ -11,11 +11,11 @@ const Saida = () => {
     let mesFormatado = mes === 12 ? 1 : mes + 1
     let hoje = dia + "/" + mesFormatado + "/" + ano
     
-    const [ms35, setMs35] = useState(null)
-    const [ms45, setMs45] = useState(null)
-    const [md25, setMd25] = useState(null)
-    const [md35, setMd35] = useState(null)
-    const [md45, setMd45] = useState(null)
+    const [ms35, setMs35] = useState(0)
+    const [ms45, setMs45] = useState(0)
+    const [md25, setMd25] = useState(0)
+    const [md35, setMd35] = useState(0)
+    const [md45, setMd45] = useState(0)
 
 
 
@@ -48,11 +48,11 @@ const Saida = () => {
                     }
                 }
             )
-        setMs35("")
-        setMs45("")
-        setMd25("")
-        setMd35("")
-        setMd45("")
+        setMs35(0)
+        setMs45(0)
+        setMd25(0)
+        setMd35(0)
+        setMd45(0)
 
     }
     return (
@@ -64,13 +64,13 @@ const Saida = () => {
                     <div>
                         <InputLabel htmlFor="ms35">Massa salgada 35</InputLabel>
                         <FormControl className="form-control" style={{ width: "70px", margin: "1px 5px" }}>
-                            <Input type="number" inputMode="numeric" id="ms35" aria-describedby="my-helper-text" onChange={(e) => setMs35(parseInt(e.target.value))} value={ms35 || ""} />
+                            <Input  inputMode="numeric" id="ms35" aria-describedby="my-helper-text" onChange={(e) => setMs35(parseInt(e.target.value))} value={ms35 || 0} />
                         </FormControl>
                     </div>
                     <div>
                         <InputLabel htmlFor="ms35">Massa salgada 45</InputLabel>
                         <FormControl className="form-control" style={{ width: "70px", margin: "1px 5px" }}>
-                            <Input type="number" inputMode="numeric" id="ms45" aria-describedby="my-helper-text" onChange={(e) => setMs45(parseInt(e.target.value))} value={ms45 || ""} />
+                            <Input  inputMode="numeric" id="ms45" aria-describedby="my-helper-text" onChange={(e) => setMs45(parseInt(e.target.value))} value={ms45 || 0} />
                         </FormControl>
                     </div>
                 </div>
@@ -79,21 +79,21 @@ const Saida = () => {
                     <div>
                         <InputLabel htmlFor="ms35">Massa doce 25</InputLabel>
                         <FormControl className="form-control" style={{ width: "70px", margin: "1px 5px" }}>
-                            <Input type="number" inputMode="numeric" id="md25" aria-describedby="my-helper-text" onChange={(e) => setMd25(parseInt(e.target.value))} value={md25 || ""} />
+                            <Input  inputMode="numeric" id="md25" aria-describedby="my-helper-text" onChange={(e) => setMd25(parseInt(e.target.value))} value={md25 || 0} />
                         </FormControl>
                     </div>
 
                     <div >
                         <InputLabel htmlFor="ms35">Massa doce 35</InputLabel>
                         <FormControl className="form-control" style={{ width: "70px", margin: "1px 5px" }}>
-                            <Input type="number" inputMode="numeric" id="md35" aria-describedby="my-helper-text" onChange={(e) => setMd35(parseInt(e.target.value))} value={md35 || ""} />
+                            <Input  inputMode="numeric" id="md35" aria-describedby="my-helper-text" onChange={(e) => setMd35(parseInt(e.target.value))} value={md35 || 0} />
                         </FormControl>
                     </div>
 
                     <div >
                         <InputLabel htmlFor="ms35">Massa doce 45</InputLabel>
                         <FormControl className="form-control" style={{ width: "70px", margin: "1px 5px" }}>
-                            <Input type="number" inputMode="numeric" id="md45" aria-describedby="my-helper-text" onChange={(e) => setMd45(parseInt(e.target.value))} value={md45 || ""} />
+                            <Input   inputMode="numeric" id="md45" aria-describedby="my-helper-text" onChange={(e) => setMd45(parseInt(e.target.value))} value={md45 || 0} />
                         </FormControl>
                     </div>
 
