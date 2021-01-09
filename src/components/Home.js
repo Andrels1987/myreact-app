@@ -24,12 +24,16 @@ const useStyles = makeStyles({
     root: {
         minWidth: 15,
         maxHeight: 130,
+        
     },
     title: {
         fontSize: 20,
         fontWeight: "bolder",
         color: "#F2B854 ",
-        lineHeight: "20px"
+        lineHeight: "20px",
+        boxSizing: "border-box",
+        padding: "0px",
+        margin: " 0 -10px"
     },
     pos: {
         marginBottom: 12,
@@ -64,7 +68,7 @@ const Home = ({ produto, setProduto }) => {
                             <Card className={classes.root}>
                                 <CardContent>
                                     <Typography className={classes.title} color="textSecondary" gutterBottom>
-                                        {p.nomeProduto}
+                                        {p.nomeProduto }
                                     </Typography>
                                     <Typography variant="h5" component="h2">
                                         {p.quantidadeEstoque}
@@ -82,7 +86,7 @@ const Home = ({ produto, setProduto }) => {
             )
             }
             <StyleRoot>
-            {loading  ? <Loading /> : ( <div className="test" style={styles.bounce}>
+            {loading  ? <Loading /> : ( <div  style={styles.bounce}>
                     <div className="container-list">
                         {produtos.map(prod => (
                             <Link to={`/produto/${prod.id}`} key={prod.id} style={{ color: "black", textAlign: "center" }} onClick={() => setProduto(null)}>

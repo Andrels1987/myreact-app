@@ -199,8 +199,6 @@ footer{
   display: grid; 
   grid-template-columns: repeat(2, 1fr);
   gap: 5px; 
-  padding: 5px; 
-  margin-bottom: 3.2rem;
 }
 .add-prod-box{
   display: grid;
