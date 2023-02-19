@@ -15,8 +15,9 @@ let inicial = [{ dataProducao: today, id: "a", ms35: 0, ms45: 0, md25: 0, md35: 
 const getDisponivel = async (date, setUsado, setProducao, setDisponivel) => {
     //saida
 
-    await db.collection('saida').where('dataProducao', '==', date).onSnapshot(
+    await db.collection('saida').where('dataProducao', '==', today).onSnapshot(
         snapshot => {
+            console.log("DATE: ", date);
             let s = snapshot.docs.map(doc => {
                 let id = doc.id
                 let data = doc.data()
@@ -31,8 +32,9 @@ const getDisponivel = async (date, setUsado, setProducao, setDisponivel) => {
 
             //producao
 
-            db.collection('producao').where('dataProducao', '==', date)
+            db.collection('producao').where('dataProducao', '==', today.toString())
                 .onSnapshot(snapshot => {
+                    console.log(today.toString());
                     let p = snapshot.docs.map(doc => {
                         let id = doc.id;
                         let data = doc.data()
@@ -47,7 +49,7 @@ const getDisponivel = async (date, setUsado, setProducao, setDisponivel) => {
 
                     //disponivel
 
-                    db.collection('disponivel').where('dataProducao', '==', date)
+                    db.collection('disponivel').where('dataProducao', '==', today)
                         .onSnapshot(snapshot => {
                             let d = snapshot.docs.map(doc => {
                                 let id = doc.id;

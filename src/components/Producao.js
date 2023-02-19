@@ -20,10 +20,12 @@ const Producao = () => {
 
 
     const bolasProduzidasNoDia = () => {
-        let producao = { dataProducao: hoje.toString(), md25, md35, md45, ms35, ms45 }
+        let producao = { dataProducao: hoje, md25, md35, md45, ms35, ms45 }
+        
         db.collection('producao').where('dataProducao', '==', hoje).get()
             .then(
                 res => {
+                    
                     if (res.docs.length !== 0) {
                         let prods = res.docs.map(doc => {
                             let id = doc.id
@@ -32,7 +34,7 @@ const Producao = () => {
                         });
 
                         producao = {
-                            dataProducao: hoje.toString(),
+                            dataProducao: hoje,
                             id: prods[0].id,
                             md25: md25 + prods[0].md25,
                             md35: md35 + prods[0].md35,
