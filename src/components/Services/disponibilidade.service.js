@@ -7,7 +7,7 @@ let date = new Date()
 let db = firebase.firestore(config);
 //const MySwal = withReactContent(Swal)
 
-let today = `${date.getDate()}/${date.getMonth() === 0 ? 1 : date.getMonth() + 1}/${date.getFullYear()}`;
+let today = `${date.getDate()}/${date.getMonth() === 0 ? "0"+1 : "0"+ (date.getMonth() + 1)}/${date.getFullYear()}`;
 let inicial = [{ dataProducao: today, id: "a", ms35: 0, ms45: 0, md25: 0, md35: 0, md45: 0 }]
 
 
@@ -17,7 +17,7 @@ const getDisponivel = async (date, setUsado, setProducao, setDisponivel) => {
 
     await db.collection('saida').where('dataProducao', '==', today).onSnapshot(
         snapshot => {
-            console.log("DATE: ", date);
+            
             let s = snapshot.docs.map(doc => {
                 let id = doc.id
                 let data = doc.data()

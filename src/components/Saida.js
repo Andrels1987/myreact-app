@@ -8,8 +8,8 @@ const Saida = () => {
     let dia = new Date().getDate()
     let mes = new Date().getMonth()
     let ano = new Date().getFullYear()
-    let mesFormatado = mes === 12 ? 1 : mes + 1
-    let hoje = dia + "/" + mesFormatado + "/" + ano
+    let mesFormatado = mes === 12 ? 1 : "0"+(mes + 1) 
+    let hoje = dia + "/" +mesFormatado + "/" + ano
     
     const [ms35, setMs35] = useState(0)
     const [ms45, setMs45] = useState(0)
